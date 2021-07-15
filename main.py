@@ -2,7 +2,7 @@ from lexer import Lexer
 from parser_ import Parser
 from interpreter import Interpreter
 
-print("Welcome to Avocado-0.0.1-beta"
+print("Welcome to Avocado-0.1.1"
       "\n-----------------------------\n")
 while True:
     try:
