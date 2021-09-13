@@ -42,17 +42,32 @@ class Parser:
         return result
 
     def term(self):
-        result = self.factor()
+        result = self.expo()
 
         while self.current_token is not None and self.current_token.type in (TokenType.star_token, TokenType.slash_token):
             if self.current_token.type == TokenType.star_token:
                 self.advance()
-                result = MultiplyNode(result, self.factor())
+                result = MultiplyNode(result, self.expo())
             elif self.current_token.type == TokenType.slash_token:
                 self.advance()
-                result = DivideNode(result, self.factor())
+                result = DivideNode(result, self.expo())
 
         return result
+
+
+    def expo(self):
+        result = self.factor()
+
+        while self.current_token is not None and self.current_token.type in (TokenType.star_star_token, TokenType.slash_slash_token):
+            if self.current_token.type == TokenType.star_star_token:
+                self.advance()
+                result = ExponentNode(result, self.factor())
+            elif self.current_token.type == TokenType.slash_slash_token:
+                self.advance()
+                result = FloorDivideNode(result, self.factor())
+
+        return result
+
 
     def factor(self):
         token = self.current_token

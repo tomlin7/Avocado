@@ -46,6 +46,24 @@ class DivideNode:
 
 
 @dataclass
+class ExponentNode:
+    node_a: any
+    node_b: any
+
+    def __repr__(self):
+        return f"({self.node_a}**{self.node_b})"
+
+
+@dataclass
+class FloorDivideNode:
+    node_a: any
+    node_b: any
+
+    def __repr__(self):
+        return f"({self.node_a}//{self.node_b})"
+
+
+@dataclass
 class PlusNode:
     node: any
 
