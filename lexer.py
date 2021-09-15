@@ -65,7 +65,9 @@ class Lexer:
             elif self.cur_char == ")":
                 self.advance()
                 yield Token(TokenType.right_parentheses_token)
-            elif self.cur_char == "%"
+            elif self.cur_char == "%":
+                self.advance()
+                yield Token(TokenType.percent_token)
             else:
                 raise Exception(f"Illegal character '{self.cur_char}'")
 

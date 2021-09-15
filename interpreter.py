@@ -40,6 +40,9 @@ class Interpreter:
     def visit_exponent_node(self, node):
         return Number(self.visit(node.node_a).value ** self.visit(node.node_b).value)
 
+    def visit_modulus_node(self, node):
+        return Number(self.visit(node.node_a).value % self.visit(node.node_b).value)
+
     def visit_plus_node(self, node):
         return self.visit(node.node)
 
